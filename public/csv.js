@@ -1,7 +1,7 @@
 // See http://en.wikipedia.org/wiki/Comma-separated_values
 (() => {
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-
+const mongoose = require('moongose');
 const resultTemplate = `
 <div class="contenido">
       <table class="center" id="result">
@@ -79,6 +79,11 @@ $(document).ready(() => {
           'json'
         );
    });
+   
+    
+    $('button.save')
+      
+   
    /* botones para rellenar el textarea */
    $('button.example').each( (_,y) => {     //Se llama a la clase example(contiene los botones declarados en el html5.El underscores es usado ya que a la funcion es obligatoria pasarle un parametro pero ese nos da igual.La y hace referencia al elemento que se llama )
      $(y).click( () => { dump(`${$(y).text()}.txt`); }); //Cuando se clickea en elemento y se activa la funcion dump y se le pasa el nombre del elemento concatenado con txt
