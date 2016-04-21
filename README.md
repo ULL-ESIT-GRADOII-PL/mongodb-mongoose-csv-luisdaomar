@@ -1,6 +1,5 @@
-# mongodb-mongoose-csv-luisdaomar
-mongodb-mongoose-csv-luisdaomar created by GitHub Classroom
-   
+# Mongo y Mongoose
+
 Repo de trabajo : https://github.com/alu0100819182/mongodb-mongoose-csv-luisdaomar
 
 Repo de la comunidad : https://github.com/ULL-ESIT-GRADOII-PL/mongodb-mongoose-csv-luisdaomar
