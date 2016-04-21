@@ -4,6 +4,7 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost/");
+var cont = 0;
 
 var Schema   = mongoose.Schema;
 const csv = new Schema({
@@ -22,6 +23,8 @@ const calculate = require('./models/calculate.js');
 
 app.get('/save', (request, response) => {
   var objecto = new modelo ({cadena: request.query.input});
+  if(cont<5){
+    console.log(cont);
   var aux = objecto.save(function (err) {
     if (err) { console.log(`ERROR:\n${err}`); return err; }
       console.log(`Guardado: ${objecto}`);
@@ -30,7 +33,13 @@ app.get('/save', (request, response) => {
       mongoose.connection.close();
     });
     response.render ('index', { title: 'CSV'});
+     cont++;
+  }
+  else{
+    console.log("Hola estoy aqui");
+  }
 });
+
 
 app.get('/', (request, response) => {
   response.render('index', {title: 'CSV con ajax'});

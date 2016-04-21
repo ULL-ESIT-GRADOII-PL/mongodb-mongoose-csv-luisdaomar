@@ -29,6 +29,7 @@
     "express-ejs-layouts": "~1.1.0",
     "jquery": "*",
     "mongoose": "^4.4.12",
+    "supervisor": "^0.10.0",
     "underscore": "*"
   },
   "engines": {
