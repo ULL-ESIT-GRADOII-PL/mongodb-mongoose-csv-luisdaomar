@@ -41,6 +41,13 @@ app.get('/save', (request, response) => {
   }
 });
 
+app.get('/loadById', (request, response) =>{                          //Funcion que devuelve el los datos con la id
+  modelo.findById(req.params.id, function(err, cadena) {
+    if(err){console.log(`ERROR:\n${err}`);return err;}
+    console.log(req.params);
+     res.send('id: '+(req.params.id || 'unknown' ));
+  })
+});
 
 app.get('/', (request, response) => {
   response.render('index', {title: 'CSV con ajax'});
