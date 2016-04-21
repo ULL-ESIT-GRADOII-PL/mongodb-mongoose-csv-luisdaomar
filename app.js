@@ -36,7 +36,8 @@ app.get('/save', (request, response) => {
      cont++;
   }
   else{
-    console.log("Hola estoy aqui");
+    var eliminar = modelo.find();
+    eliminar.remove();
   }
 });
 
