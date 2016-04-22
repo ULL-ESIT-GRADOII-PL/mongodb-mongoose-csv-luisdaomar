@@ -12,9 +12,9 @@ app.use(express.static(__dirname + '/public'));
 
 const calculate = require('./models/calculate.js');
 
-mongoose.connect('mongodb://localhost/');
+mongoose.connect('mongodb://localhost/chuchu');
   const csv = mongoose.Schema({ 
-    id : String,
+    name : String,
     cadena : String
 });
 
@@ -25,12 +25,11 @@ app.get('/save', (request, response) => {
         if (err)
             return err;
         if (cadena.length >= 4) {
-          console.log(`Borrando`);
-            Modelo.find({ cadena: cadena[0].cadena }).remove().exec();
+          Modelo.find({ cadena: cadena[0].cadena }).remove().exec();
         }
       });
       
-      var obj = new Modelo({id:"entrada", cadena: request.query.input});
+      var obj = new Modelo({name: request.query.user, cadena: request.query.input});
       
       var aux = obj.save(function (err) {
         if (err) { console.log(`Hubieron errores:\n${err}`); return err; }
