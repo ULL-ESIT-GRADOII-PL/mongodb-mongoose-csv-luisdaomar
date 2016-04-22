@@ -1,0 +1,77 @@
+$font-stack:    Helvetica, sans-serif;
+$fontdos-stack: Arial;
+$primary-color: #333;
+$segundo-color: #b0c4de;
+$tercer-color: #eee;
+$cuarto-color: #00FF66;
+$tam-size: large;
+$tam-size-dos: x-large;
+$alineamiento: center;
+$superior: top;
+$derecha: right;
+$nada: none;
+$inicio: outset;
+$final: inset;
+$blanco: white;
+$automatico: auto;
+$rojo: red;
+
+html {
+  font-size: $tam-size;
+  font-family : $fontdos-stack;
+}
+
+h1 {
+  text-align: $alineamiento;
+  font-size: $tam-size-dos;
+}
+
+th td {
+  vertical-align: $superior;
+  text-align: $derecha;
+}
+
+#finaltable:hover td {
+  background-color: $segundo-color;
+}
+
+tr:nth-child(odd) {
+  background-color: $tercer-color;
+}
+
+tr:nth-child(even) {
+  background-color: $cuarto-color;
+}
+
+input {
+  text-align: $derecha;
+  border: $nada;
+}
+
+textarea {
+  border: $inicio;
+  border-color: $blanco;
+}
+
+table {
+  border: $final;
+  border-color: $blanco;
+}
+
+table.center {
+  margin-left: $automatico;
+  margin-right: $automatico;
+}
+
+#result {
+   border-color: $rojo;
+}
+
+tr.error {
+  background-color: $rojo;
+}
+
+body
+{
+ background-color: $segundo-color;
+}
