@@ -21,6 +21,10 @@ const fillTable = (data) => {
   $("#finaltable").html(_.template(resultTemplate, { rows: data.rows }));
 };
 
+
+
+  
+
 /* Volcar en la textarea de entrada
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
@@ -77,6 +81,43 @@ $(document).ready(() => {
           fillTable,
           'json'
         );
+   });
+   
+   $("#load1").click( () => {
+     $.get("/loadById",
+        {input: 'pepe'},
+          $("#original").val(data.cadena),
+        'json'
+      );
+     
+   });
+   
+   $("#load2").click( () => {
+     $.get("/loadById",
+        {input: 'pepe'},
+        fillMongo,
+          $("#original").val(data.cadena),
+        'json'
+      );
+     
+   });
+   
+   $("#load3").click( () => {
+     $.get("/loadById",
+        {input: 'pepe'},
+        $("#original").val(data.cadena),
+        'json'
+      );
+     
+   });
+   
+   $("#load4").click( () => {
+     $.get("/loadById",
+        {input: 'pepe'},
+        $("#original").val(data.cadena),
+        'json'
+      );
+     
    });
    
    $(".save").click( () => {

@@ -35,19 +35,28 @@ app.get('/save', (request, response) => {
         if (err) { console.log(`Hubieron errores:\n${err}`); return err; }
         console.log(`Saved: ${obj}`);
         Promise.all([aux]).then( (id) => {
-          mongoose.connection.close();
+         mongoose.connection.close();
         });
         response.render ('index', { title: 'CSV'});
       });
 });
 
-/*app.get('/loadById', (request, response) =>{    //Funcion que devuelve el los datos con la id
-  modelo.findById(req.params.id, function(err, cadena) {
-    if(err){console.log(`ERROR:\n${err}`);return err;}
-    console.log(req.params);
-     res.send('id: '+(req.params.id || 'unknown' ));
+app.get('/loadById', (request, response) =>{    //Funcion que devuelve el los datos con la id
+  Modelo.find(
+    {name: request.query.input}, 
+    function(err, name) {
+      if(err){
+        console.log(`ERROR:\n${err}`);
+        return err;
+      
+      }
+      else {
+        console.log("Hola");
+        console.log(name);
+        response.send(name);
+     }
   })
-});*/
+});
 
 app.get('/', (request, response) => {
   response.render('index', {title: 'CSV con ajax'});
