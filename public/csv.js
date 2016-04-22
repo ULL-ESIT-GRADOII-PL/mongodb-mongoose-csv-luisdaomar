@@ -78,10 +78,11 @@ $(document).ready(() => {
           'json'
         );
    });
+   
    $(".save").click( () => {
+    if (window.localStorage) localStorage.original = original.value;
     $.get("/save", 
-          { input: original.value },
-          'json'
+          { input: original.value }
         );
    });
       
