@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 
 const calculate = require('./models/calculate.js');
 
-mongoose.connect('mongodb://localhost/chuchu');
+mongoose.connect('mongodb://localhost/');
   const csv = mongoose.Schema({ 
     name : String,
     cadena : String
@@ -42,18 +42,15 @@ app.get('/save', (request, response) => {
 });
 
 app.get('/loadById', (request, response) =>{    //Funcion que devuelve el los datos con la id
-  Modelo.find(
-    {name: request.query.input}, 
-    function(err, name) {
+    Modelo.find({}, function(err, cadena) {
       if(err){
         console.log(`ERROR:\n${err}`);
+        response.send(cadena[request.query.input].cadena);
         return err;
-      
       }
       else {
-        console.log("Hola");
-        console.log(name);
-        response.send(name);
+        console.log(cadena[request.query.input].cadena);
+        response.send(cadena[request.query.input]);
      }
   })
 });

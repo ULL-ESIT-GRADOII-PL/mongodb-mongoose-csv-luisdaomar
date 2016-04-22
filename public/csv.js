@@ -21,9 +21,9 @@ const fillTable = (data) => {
   $("#finaltable").html(_.template(resultTemplate, { rows: data.rows }));
 };
 
-
-
-  
+const fillMongo = (data) => {
+  $("#original").val(data.cadena);
+};
 
 /* Volcar en la textarea de entrada
  * #original el contenido del fichero fileName */
@@ -74,6 +74,7 @@ $(document).ready(() => {
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
     }
+    
     $("#parse").click( () => {
         if (window.localStorage) localStorage.original = original.value;
         $.get("/csv", /* Request AJAX para que se calcule la tabla */
@@ -83,10 +84,18 @@ $(document).ready(() => {
         );
    });
    
+   $(".save").click( () => {
+    if (window.localStorage) localStorage.original = original.value;
+    $.get("/save", 
+          { input: original.value, 
+            user: origina.value}
+        );
+   });
+   
    $("#load1").click( () => {
      $.get("/loadById",
-        {input: 'pepe'},
-          $("#original").val(data.cadena),
+        {input: '0'},
+        fillMongo,
         'json'
       );
      
@@ -94,9 +103,8 @@ $(document).ready(() => {
    
    $("#load2").click( () => {
      $.get("/loadById",
-        {input: 'pepe'},
+        {input: '1'},
         fillMongo,
-          $("#original").val(data.cadena),
         'json'
       );
      
@@ -104,8 +112,8 @@ $(document).ready(() => {
    
    $("#load3").click( () => {
      $.get("/loadById",
-        {input: 'pepe'},
-        $("#original").val(data.cadena),
+        {input: '2'},
+        fillMongo,
         'json'
       );
      
@@ -113,19 +121,11 @@ $(document).ready(() => {
    
    $("#load4").click( () => {
      $.get("/loadById",
-        {input: 'pepe'},
-        $("#original").val(data.cadena),
+        {input: '3'},
+        fillMongo,
         'json'
       );
      
-   });
-   
-   $(".save").click( () => {
-    if (window.localStorage) localStorage.original = original.value;
-    $.get("/save", 
-          { input: original.value, 
-            user: origina.value}
-        );
    });
       
    /* botones para rellenar el textarea */
