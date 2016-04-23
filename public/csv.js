@@ -21,6 +21,10 @@ const fillTable = (data) => {
   $("#finaltable").html(_.template(resultTemplate, { rows: data.rows }));
 };
 
+const fillMongo = (data) => {
+  $("#original").val(data.cadena);
+};
+
 /* Volcar en la textarea de entrada
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
@@ -70,6 +74,7 @@ $(document).ready(() => {
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
     }
+    
     $("#parse").click( () => {
         if (window.localStorage) localStorage.original = original.value;
         $.get("/csv", /* Request AJAX para que se calcule la tabla */
@@ -82,8 +87,45 @@ $(document).ready(() => {
    $(".save").click( () => {
     if (window.localStorage) localStorage.original = original.value;
     $.get("/save", 
-          { input: original.value }
+          { input: original.value, 
+            user: origina.value}
         );
+   });
+   
+   $("#load1").click( () => {
+     $.get("/loadById",
+        {input: '0'},
+        fillMongo,
+        'json'
+      );
+     
+   });
+   
+   $("#load2").click( () => {
+     $.get("/loadById",
+        {input: '1'},
+        fillMongo,
+        'json'
+      );
+     
+   });
+   
+   $("#load3").click( () => {
+     $.get("/loadById",
+        {input: '2'},
+        fillMongo,
+        'json'
+      );
+     
+   });
+   
+   $("#load4").click( () => {
+     $.get("/loadById",
+        {input: '3'},
+        fillMongo,
+        'json'
+      );
+     
    });
       
    /* botones para rellenar el textarea */
