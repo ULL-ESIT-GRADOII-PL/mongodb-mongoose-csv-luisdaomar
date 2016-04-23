@@ -49,7 +49,6 @@ app.get('/loadById', (request, response) =>{    //Funcion que devuelve el los da
         return err;
       }
       else {
-        console.log(cadena[request.query.input].cadena);
         response.send(cadena[request.query.input]);
      }
   })

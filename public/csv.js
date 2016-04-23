@@ -23,6 +23,7 @@ const fillTable = (data) => {
 
 const fillMongo = (data) => {
   $("#original").val(data.cadena);
+  $("#origina").val(data.name);
 };
 
 /* Volcar en la textarea de entrada
